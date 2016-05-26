@@ -88,22 +88,22 @@ What exact issues do we have here?
    Risks:
    the most important thing in this case is – time wasting
 
-   ​
+   <br />
 
    ![time-wasting](_01-learn-how-to-make-a-good-code-by-bad-example/time-wasting.png)
-   ​
+   <br />
 
    , if we will get enquiry from business to present them algorithm details or we will have a need to modify this piece of code it will take us ages to understand logic of our **Calculate** method. And if we won’t document it or refactor the code, next time we/other developer will spend the same time to figure out what exactly is happening there. We can make very easily mistake while modifying it as well.
 
 2. **Magic numbers**
-   ​
+   <br />
    ![magic-numbers](_01-learn-how-to-make-a-good-code-by-bad-example/magic-numbers.png)
-   ​
+   <br />
    In our example the **type** variable means - status of the customer account. Could you guess that? **If-else if** statements make a choice how to calculate price of the product after discount.
    Now we don’t have an idea what kind of account is 1,2,3 or 4. Let’s imagine now that you have to change algorithm of giving discount for **ValuableCustomer** account You can try to figure out it from the rest of the code – what will take you a long time but even though we can very easily make a mistake and modify algorithm of **BasicCustomer** account – numbers like 2 or 3 aren’t very descriptive. After our mistake customers will be very happy because they will be getting a discount of valuable customers  😀 :)
 
 3. **Not obvious bug** 
-   Because our code is very dirty and unreadable we can easily miss very important thing. Imagine that there is a new customer account status added to our system - **GoldenCustomer**. Now our method will return 0 as a final price for every product which will be bought from a new kind of an account. Why? Because if none of our **if-else if** conditions will be satisfied (there will be unhandled account status) method will always return 0. Our boss is not happy – he sold many products for free before somebody realized that something is wrong.
+   Because our code is very dirty and unreadable we can easily miss very important thing. Imagine that there is a new customer account status added to our system - **GoldenCustomer**. Now our method will return 0 as a final price for every product which will be bought from a new kind of an account. Why? Because if none of our **if-else if** conditions will be satisfied (there will be unhandled account status) method will always return 0. Our boss is not happy – he sold many products for free before somebody realized that something is wrong.<br />
    ​
     ![not-obvious-bug ](_01-learn-how-to-make-a-good-code-by-bad-example/not-obvious-bug .png)
 
