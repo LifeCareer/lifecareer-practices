@@ -4,31 +4,44 @@
 
 *作者：[Radosław Sadowski](http://www.codeproject.com/script/Membership/View.aspx?mid=10986471)，Microsoft Certified Software Developer*
 
+[TOC]
 
+## 介绍
 
-## Introduction
+我是微软认证软件开发者 Radoslaw Sadowski，自打我开始工作我就使用微软技术。
 
-My name is Radoslaw Sadowski and I'm a Microsoft Certified Software Developer. Since beginning of my career I was working with Microsoft technologies.
+经过多年的工作，我发现身边人写的糟糕代码简直到了罄竹难书的地步，以至我都出现了代码洁癖。
 
-After a few years of experience I saw so many badly written code that I could write a book showing all these dirty examples.
-Those experiences made me a clean code freak.
+写这篇文章是为了通过一些糟糕代码的例子和大家探讨如何去编写整洁的、可扩展的和可维护的代码。我在后面会解释糟糕代码会带来哪些麻烦问题，并介绍如何通过使用良好实践（good practices）和设计模式（design patterns）来应对这种局面。
 
-A purpose of this article is to show how to write a clean, extendable and maintainable code by showing example of badly written class. I will explain what troubles could it bring and present a way how to replace it by a better solution – using good practices and design patterns.
+第一部分是写给刚入门的 C# 开发者，演示一些基础错误以及一些关于提高代码可读性的技术。高级部分主要针对至少掌握设计模式的那些开发者，内容涉及完全整洁的可单元测试的代码。
 
-First part is for every developer who knows C# language basics - it will show some basic mistakes and techniques how to make code readable like a book. Advanced part is for developers who have at least basic understanding of design patterns – it will show completely clean, unit testable code.
+为理解本文，你至少需要了解这些知识：
 
-To understand this article you need to have at least basic knowledge of:
+- C# 语言
+- 依赖注入（dependency injection）、工厂方法（factory method）和策略设计模式（strategy design patterns）
 
-- C# language
-- dependency injection, factory method and strategy design patterns
-
-​Example described in this article is a concrete, real world feature – I won't show examples like build pizza using decorator pattern or implement calculator using strategy pattern :smile: :)
+​本文描述的例子都是具体的、三次元世界的功能，当然我也不会拿装饰模式（decorator pattern）来做披萨饼或是用策略模式（strategy pattern）来实现计算器，对不 :smile: :)
 
  ![pizza-or-calculator](_01-learn-how-to-make-a-good-code-by-bad-example/pizza-or-calculator.png)
 
+
+
+
+
+
+
 As those theoretical examples are very good for explanation I found extremely difficult to use it in a real production applications.
 
-We hear many times don't use **this **and use **that **instead. But why? I will try to explain it and prove that all the good practices and design patterns are really saving our lives!
+
+
+由于这些理论的例子是非常好的解释，我发现极难在实际生产应用中使用它。
+
+
+
+
+
+We hear many times don't use **this** and use **that** instead. But why? I will try to explain it and prove that all the good practices and design patterns are really saving our lives!
 
 **Note:**
 
@@ -38,10 +51,11 @@ We hear many times don't use **this **and use **that **instead. But why? I w
 - I don't care in below code about error handling, logging etc. Code is written only to show solution for common programming problems.
 
 
-
 Let’s go to concretes...
 
-## So badly written class...
+
+
+## 如何撸出一手渣代码？
 
 Our real world example will be below class:
 
@@ -144,7 +158,7 @@ What exact issues do we have here?
 
 
 
-## Refactoring...
+## 开始重构……
 
 In 9 below steps I will show you how we can avoid all described above risks and bad practices to achieve a clean, maintainable and unit testable code which will be readable like a book.
 
@@ -185,7 +199,9 @@ public class DiscountManager
 
 However we still don't know what 1, 2, 3, 4 mean, let's do something with it!
 
-### II STEP – Magic numbers
+
+
+### 第二步：魔法数
 
 One of techniques of avoiding magic numbers in C# is replacing it by **enum**s. I prepared **AccountStatus** enum to replace our magic numbers in **if-else if** statements:
 
@@ -230,7 +246,7 @@ public class DiscountManager
 }
 ```
 
-### III STEP – more readable
+### 第三步：提高可读性
 
 In this step we will improve readability of our class by replacing **if-else if** statement with **switch-case** statement.
 
@@ -455,7 +471,9 @@ public class DiscountManager
 
 I hope you will agree that our method is now more self explanatory 😀 :)
 
-### STEP VII – Don't repeat yourself!
+
+
+###  第七步：不要让代码重复！
 
  ![dont-repeat-yourself](_01-learn-how-to-make-a-good-code-by-bad-example/dont-repeat-yourself.png)
 
@@ -521,7 +539,7 @@ Anyway, will you agree that our code looks a lot better now?
 
 So let's jump to the next step!
 
-### STEP VIII – Remove few unnecessary lines...
+### 第八步：移除多余的行
 
 We should write as short and simple code as it is possible. Shorter code = less possible bugs, shorter time of understanding the business logic.
 
@@ -571,7 +589,7 @@ public class DiscountManager
 
 We were able to move this line outside the switch-case statement. Benefit – less code!
 
-### STEP IX – Advanced – Finally get clean code
+### 第九步：（高级）获得整洁的代码
 
 All right! Now we can read our class like a book, but it isn't enough for us! We want super clean code now!
 
@@ -756,10 +774,10 @@ It will allow our **DiscountManager** class to use proper strategy without know
 **NotRegisteredDiscountCalculator, SimpleCustomerDiscountCalculator, MostValuableCustomerDiscountCalculator** classes contain implementation of proper algorithm according to account status. As our 3 strategies look similar the only thing we could do more would be to create one method for all 3 algorithms and call it from each strategy class with a different parameter. As it would make our example to big I didn't decide to do that.
 
 All right, so to sum up now we have a clean readable code and all our classes have only one responsibility – **only one reason to change**:
-1. **DiscountManager **– manage code flow
-2. **DefaultLoyaltyDiscountCalculator **– calculation of discount for loyalty
-3. **DefaultAccountDiscountCalculatorFactory **– deciding which strategy of calculation account status discount to choose
-4. **NotRegisteredDiscountCalculator**, ** SimpleCustomerDiscountCalculator**, **MostValuableCustomerDiscountCalculator** – calculation of discount for account status
+1. **DiscountManager** – manage code flow
+2. **DefaultLoyaltyDiscountCalculator** – calculation of discount for loyalty
+3. **DefaultAccountDiscountCalculatorFactory** – deciding which strategy of calculation account status discount to choose
+4. **NotRegisteredDiscountCalculator**, **SimpleCustomerDiscountCalculator**, **MostValuableCustomerDiscountCalculator** – calculation of discount for account status
 
 Now compare method from beginning:
 
@@ -804,7 +822,9 @@ public decimal ApplyDiscount(decimal price, AccountStatus accountStatus, int tim
 
 ```
 
-## Conclusion
+
+
+## 结论
 
 Presented in this article code is extremely simplified to make explanation of used techniques and patterns easier. It shows how common programming problems can be resolved in a dirty way and what are benefits of resolving it in a proper, clean way using good practices and design patterns.
 
@@ -816,7 +836,7 @@ If you have some questions according to article don't hesitate to contact me!
 
  ![the-end](_01-learn-how-to-make-a-good-code-by-bad-example/the-end.png)
 
-## License
+## 授权
 
 This article, along with any associated source code and files, is licensed under [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx)
 

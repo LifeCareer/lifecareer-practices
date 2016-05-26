@@ -3,8 +3,8 @@
 
 ## 目录
 
-+ [如何撸出一手好代码？](Content/2016/01-learn-how-to-make-a-good-code-by-bad-example.md) by [Radosław Sadowski](http://www.codeproject.com/script/Membership/View.aspx?mid=10986471)
-+ [如何撸出一手好代码(续)？](Content/2016/02-learn-how-to-make-a-good-code-by-bad-example-part2.md) by [Radosław Sadowski](http://www.codeproject.com/script/Membership/View.aspx?mid=10986471)
++ [如何撸出一手好代码？](Content/2016/01-learn-how-to-make-a-good-code-by-bad-example.md)
++ [如何撸出一手好代码？（续）](Content/2016/02-learn-how-to-make-a-good-code-by-bad-example-part2.md)
 
 ## 关于 ##
 

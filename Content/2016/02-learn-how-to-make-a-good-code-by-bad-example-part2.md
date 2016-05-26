@@ -1,16 +1,16 @@
-# 如何撸出一手好代码(续)？
+# 如何撸出一手好代码？（续）
 
 *原题：[C# BAD PRACTICES: Learn how to make a good code by bad example – Part 2](http://www.codeproject.com/Articles/1097145/Csharp-BAD-PRACTICES-Learn-how-to-make-a-good-co)*
 
 *作者：[Radosław Sadowski](http://www.codeproject.com/script/Membership/View.aspx?mid=10986471)，Microsoft Certified Software Developer*
 
+[TOC]
 
-
-## Introduction
+## 介绍
 
 Hi all! This article is a continuation of my previous article:
 
-[C# BAD PRACTICES: Learn how to make a good code by bad example](http://www.codeproject.com/Articles/1083348/Csharp-BAD-PRACTICES-Learn-how-to-make-a-good-code)
+[C# BAD PRACTICES: Learn how to make a good code by bad example](01-learn-how-to-make-a-good-code-by-bad-example.md)
 
 I strongly recommend to read it before you will start reading this one (I'll refer to it many times).
 
@@ -28,7 +28,9 @@ So to sum up I showed how to use a few techniques and design patterns which can 
 
 I showed it on an simplified example which presents implementation of the real-world feature – Discount Calculator.
 
-## The goal of the article
+
+
+## 目标
 
  ![soccer-dog-goal-hi](_02-learn-how-to-make-a-good-code-by-bad-example-part2/soccer-dog-goal-hi.png)
 
@@ -100,7 +102,7 @@ Isn't “programming to interface” approach great??!! Of course IT IS!
 
 
 
-## Switch case vs dictionary pattern
+## Switch-case 语句 vs 字典模式
 
 Why **switch-case** or multiple **if-else if** statements are a bad idea.
 
@@ -149,7 +151,9 @@ Our factory is also tightly coupled with concrete implementations – it violate
 
 We can imagine situations where these issues will be better visible. If we will have a huge **switch-case** statement and every **case** block will be returning an instance of the class containing a specific business logic for the given country we can imagine that our **switch-case** statement will be extended every time we will want to handle a new one (of about 200 countries which exist in the world). After some time our **switch-case** statement will be huge and unreadable. There will be a risk to add the same country twice and so on.
 
-## Understand objects life cycle
+
+
+## 理解对象的生命周期
 
  ![what](_02-learn-how-to-make-a-good-code-by-bad-example-part2/what.png)
 
@@ -213,7 +217,9 @@ I grouped my solutions into two groups:
 - The factory returns **THE SAME** instance of the class for each call
 - The factory returns **A NEW** instance of the class for each call
 
-## Useful dictionary
+
+
+## 善用字典
 
 In all suggested below solutions I will use **C# Dictionary** class. However I will use it in a different variants.
 
@@ -225,7 +231,7 @@ In all suggested below solutions I will use **C# Dictionary** class. However I
 
 
 
-## The same instance per call
+## 每次调用同一个实例
 
 In this group of solutions, every call to the factory for a concrete implementation of **IAccountDiscountCalculator** for an instance:
 
@@ -715,7 +721,9 @@ return calculator.Value;
 - You potentially allow deployment team to change behaviour of your code
 - First object return from the factory will be slower
 
-## A new instance per call
+
+
+## 每次调用一个新实例
 
 In this group of solutions, each call to the factory for the concrete implementation of **IAccountDiscountCalculator** - for an instance:
 
@@ -968,7 +976,9 @@ The **GetAccountDiscountCalculator** method looks the same as in the previous v
 - Objects are returned slower from the factory - every call to the factory for an object will create a new instance
 - Caller is responsible for managing a life cycle of an object after the factory will return it
 
-## Conclusion
+
+
+## 结论
 
  ![fin](_02-learn-how-to-make-a-good-code-by-bad-example-part2/fin.png)
 
@@ -988,7 +998,7 @@ If you will have any questions to the article don't hesitate to contact me.
 
  
 
-## License
+## 授权
 
 This article, along with any associated source code and files, is licensed under [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx)
 
