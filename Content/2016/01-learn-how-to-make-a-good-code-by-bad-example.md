@@ -25,16 +25,6 @@
 
  ![pizza-or-calculator](_01-learn-how-to-make-a-good-code-by-bad-example/pizza-or-calculator.png)
 
-
-
-
-
-
-
-As those theoretical examples are very good for explanation I found extremely difficult to use it in a real production applications.
-
-
-
 由于这些理论的例子是非常好的解释，我发现极难在实际生产应用中使用它。
 
 
@@ -57,9 +47,9 @@ Let’s go to concretes...
 
 ## 如何撸出一手渣代码？
 
-Our real world example will be below class:
+我们三次元世界可能会写出这样的类（class）：
 
-```
+```c#
 public class Class1
 {
   public decimal Calculate(decimal amount, int type, int years)
@@ -86,6 +76,8 @@ public class Class1
   }
 }
 ```
+
+
 
 It is a really bad guy. Can we imagine what is the role of the above class? It is doing some wired calculating? That's all we can say about it for now…
 
@@ -246,6 +238,8 @@ public class DiscountManager
 }
 ```
 
+
+
 ### 第三步：提高可读性
 
 In this step we will improve readability of our class by replacing **if-else if** statement with **switch-case** statement.
@@ -289,6 +283,8 @@ public class DiscountManager
   }
 }
 ```
+
+
 
 ### IV STEP - Not obvious bug
 
@@ -340,6 +336,8 @@ public class DiscountManager
   }
 }
 ```
+
+
 
 ### V STEP - Lets analyse calculations
 
@@ -402,6 +400,8 @@ Now we have all the rules which are calculating a discount according to account 
 
 Now we have all the rules which are calculating a discount according to account status in one format:
 **price - ((static_discount_in_percentages/100) \* price)**
+
+
 
 ### VI STEP - Get rid of magic numbers – another technique
 
@@ -539,6 +539,8 @@ Anyway, will you agree that our code looks a lot better now?
 
 So let's jump to the next step!
 
+
+
 ### 第八步：移除多余的行
 
 We should write as short and simple code as it is possible. Shorter code = less possible bugs, shorter time of understanding the business logic.
@@ -588,6 +590,8 @@ public class DiscountManager
 ```
 
 We were able to move this line outside the switch-case statement. Benefit – less code!
+
+
 
 ### 第九步：（高级）获得整洁的代码
 
@@ -824,6 +828,8 @@ public decimal ApplyDiscount(decimal price, AccountStatus accountStatus, int tim
 
 
 
+
+
 ## 结论
 
 Presented in this article code is extremely simplified to make explanation of used techniques and patterns easier. It shows how common programming problems can be resolved in a dirty way and what are benefits of resolving it in a proper, clean way using good practices and design patterns.
@@ -832,11 +838,13 @@ In my work experience I saw many times highlighted in this article bad practices
 
 Bare in mind that your code will live in a production environment for a long time and will be modified on every business requirement change. So writing too simple, unextendable code will have serious consequences very soon. And finally be nice for developers, who will maintain your code after yourself  😀 :)
 
-If you have some questions according to article don't hesitate to contact me!
+如果你在阅读时遇到了问题，请果断联系我！
 
  ![the-end](_01-learn-how-to-make-a-good-code-by-bad-example/the-end.png)
 
+
+
 ## 授权
 
-This article, along with any associated source code and files, is licensed under [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx)
+本文及相关源代码和文件，均依据 [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx) 授权。
 

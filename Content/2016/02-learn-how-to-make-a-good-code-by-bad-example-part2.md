@@ -8,9 +8,9 @@
 
 ## 介绍
 
-Hi all! This article is a continuation of my previous article:
+列位，本文是我之前发表的[《如何撸出一手好代码？》](01-learn-how-to-make-a-good-code-by-bad-example.md)的续篇：
 
-[C# BAD PRACTICES: Learn how to make a good code by bad example](01-learn-how-to-make-a-good-code-by-bad-example.md)
+
 
 I strongly recommend to read it before you will start reading this one (I'll refer to it many times).
 
@@ -99,6 +99,8 @@ We will only have to inject different implementation of the **IAccountDiscountC
 Isn't “programming to interface” approach great??!! Of course IT IS!
 
  ![happy](_02-learn-how-to-make-a-good-code-by-bad-example-part2/happy.png)
+
+
 
 
 
@@ -219,6 +221,7 @@ I grouped my solutions into two groups:
 
 
 
+
 ## 善用字典
 
 In all suggested below solutions I will use **C# Dictionary** class. However I will use it in a different variants.
@@ -228,6 +231,8 @@ In all suggested below solutions I will use **C# Dictionary** class. However I
  Let's go now to the concrete implementations..
 
  ![turn-coffee-into-code](_02-learn-how-to-make-a-good-code-by-bad-example-part2/turn-coffee-into-code.png)
+
+
 
 
 
@@ -723,6 +728,7 @@ return calculator.Value;
 
 
 
+
 ## 每次调用一个新实例
 
 In this group of solutions, each call to the factory for the concrete implementation of **IAccountDiscountCalculator** - for an instance:
@@ -978,6 +984,7 @@ The **GetAccountDiscountCalculator** method looks the same as in the previous v
 
 
 
+
 ## 结论
 
  ![fin](_02-learn-how-to-make-a-good-code-by-bad-example-part2/fin.png)
@@ -994,11 +1001,11 @@ Very important thing is that thank to "programming to an interface" approach we 
 
 So to sum up we've end up with fully configurable system which is based on configuration in a code, database or configuration file. We can now easily switch between the factory implementations and concrete calculators implementations. We can also add a support for a new Account Statuses and add a new calculators implementations without modification of existing classes.
 
-If you will have any questions to the article don't hesitate to contact me.
+如果你在阅读时遇到了问题，请果断联系我！
 
- 
+
 
 ## 授权
 
-This article, along with any associated source code and files, is licensed under [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx)
+本文及相关源代码和文件，均依据 [The Code Project Open License (CPOL)](http://www.codeproject.com/info/cpol10.aspx) 授权。
 
